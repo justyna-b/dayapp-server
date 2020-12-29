@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 
 const capitalSchema = new mongoose.Schema({
   name: {
-    type: Number,
+    type: String,
     required: true
   },
   en_name: {
-    type: Number,
+    type: String,
     required: true
   },
   longitude: {
