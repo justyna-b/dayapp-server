@@ -1,20 +1,32 @@
 const mongoose = require('mongoose')
 
 const capitalSchema = new mongoose.Schema({
+  country: {
+    type: String,
+    required: true,
+    trim: true
+  },
   name: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   en_name: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   longitude: {
     type: Number,
     required: true,
     trim: true
   },
-  lattitude: {
+  latitude: {
+    type: Number,
+    required: true,
+    trim: true
+  },
+  woeid: {
     type: Number,
     required: true,
     trim: true
