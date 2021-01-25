@@ -21,15 +21,15 @@ router.get('/info/today/:city', async (req, res) => {
   }
   try {
     let weather = await fetch(
-      `https://www.metaweather.com/api/location/${city.woeid}/`
+      `${process.env.META_API}/api/location/${city.woeid}/`
     )
     let weatherJson = await weather.json()
     info.humidity = weatherJson.consolidated_weather[0].humidity
     info.temp = weatherJson.consolidated_weather[0].the_temp.toFixed(2)
-    info.weather = `https://www.metaweather.com/static/img/weather/${weatherJson.consolidated_weather[0].weather_state_abbr}.svg`
+    info.weather = `${process.env.META_API}/static/img/weather/${weatherJson.consolidated_weather[0].weather_state_abbr}.svg`
 
     let details = await fetch(
-      `https://api.sunrise-sunset.org/json?lat=${city.latitude}&lng=${city.longitude}&date=today`
+      `${process.env.SUNRISE_API}/json?lat=${city.latitude}&lng=${city.longitude}&date=today`
     )
     let detailsJson = await details.json()
     info.sunset = detailsJson.results.sunset
@@ -69,16 +69,15 @@ router.get('/info/:date/:city', async (req, res) => {
   date = `${date[0]}/${date[1]}/${date[2]}`
   try {
     let weather = await fetch(
-      `https://www.metaweather.com/api/location/${city.woeid}/${date}`
+      `${process.env.META_API}/api/location/${city.woeid}/${date}`
     )
     let weatherJson = await weather.json()
     info.humidity = weatherJson[0].humidity
     info.temp = weatherJson[0].the_temp.toFixed(2)
-    info.weather = `https://www.metaweather.com/static/img/weather/${weatherJson[0].weather_state_abbr}.svg`
-    console.log(info.weather)
+    info.weather = `${process.env.META_API}/static/img/weather/${weatherJson[0].weather_state_abbr}.svg`
 
     let details = await fetch(
-      `https://api.sunrise-sunset.org/json?lat=${city.latitude}&lng=${city.longitude}&date=${req.params.date}`
+      `${process.env.SUNRISE_API}/json?lat=${city.latitude}&lng=${city.longitude}&date=${req.params.date}`
     )
     let detailsJson = await details.json()
     console.log(detailsJson)

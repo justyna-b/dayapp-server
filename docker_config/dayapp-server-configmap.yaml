@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  DBNAME: mydb
+  DBPORT: "27017"
+  HOST: mongodb
+  LOGIN: dbuser01
+  META_API: https://www.metaweather.com
+  SUNRISE_API: https://api.sunrise-sunset.org/
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: dayapp-server-configmapv3
